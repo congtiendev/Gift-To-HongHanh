@@ -9,7 +9,7 @@ img {
 body {
     background:  linear-gradient(
       rgba(255, 255, 255, 0.9), 
-      rgba(255, 255, 255, 0.9)), url(https://s-media-cache-ak0.pinimg.com/originals/30/b3/a9/30b3a9b27032a6b9c1d7a69d2400fb9e.jpg);
+      rgba(255, 255, 255, 0.9)), url(./img/body-bg.jpg);
       font-family: "Dancing Script", cursive;
   font-size: 18px !important;
 }
@@ -39,7 +39,7 @@ body {
 
 
 .pages [class^="page-num-"] {
-  background-image: url("https://img00.deviantart.net/cbb9/i/2005/258/c/4/paper_texture_v5_by_bashcorpo.jpg");
+  background-image: url("./img/page-bg.jpg");
    background-size: auto 100%;
   position: relative;
 }
@@ -71,7 +71,7 @@ body {
 
 
 .page-num-1 .pages-background {
-    background: linear-gradient( rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url(https://openclipart.org/image/2400px/svg_to_png/242093/Vintage-Floral-Texture-Background.png);
+    background: linear-gradient( rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url(./img/page-bg-flower.png);
     background-size: cover;
     opacity: 0.2;
     width: 100%;
