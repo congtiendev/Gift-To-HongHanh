@@ -8,6 +8,7 @@
     <!-- favicon -->
     <link rel="icon" href="./img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script> -->
 </head>
@@ -130,14 +131,17 @@
                         <div class="pages-content">
                             <div class="content-inner">
                                 <p class="wish">
-                                    Tớ cũng biết là cậu vừa trải qua một cuộc đổ vỡ. Tớ cũng thấy nỗi buồn qua những bài reup của cậu. 
+                                    Tớ cũng biết là cậu vừa trải qua một cuộc đổ vỡ. Tớ cũng thấy nỗi buồn qua những bài
+                                    reup của cậu.
                                 </p>
                                 <div class="text">
-                                    <img src="./img/nyc.png" alt="" style="width:200px;">
+                                    <img src="./img/hanh-phuc.png" alt="" style="width:200px;">
                                 </div>
                                 <p class="wish">
-                                    Tớ không biết có thể giúp gì cho cậu không nhưng cậu ơi, hãy yêu thương bản thân mình nhiều hơn... Sau mỗi cơn mưa sẽ có cầu vồng, và sau mỗi đêm tối sẽ có bình minh.
-                                   </p>
+                                    Tớ không biết có thể giúp gì cho cậu không nhưng cậu ơi, hãy yêu thương bản thân
+                                    mình nhiều hơn... Sau mỗi cơn mưa sẽ có cầu vồng, và sau mỗi đêm tối sẽ có bình
+                                    minh.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -145,17 +149,17 @@
                         <div class="pages-content">
                             <div class="content-inner">
                                 <p style="text-align: justify;font-style: italic;">
-                                  " Rồi em sẽ gặp một chàng trai khác
-                                  <br>
-                                  Nắm tay và bước đi bầu trời xanh ngát
-                                  <br>
-                                  Đón đưa dù bão giông lòng kề vai sát
+                                    " Rồi em sẽ gặp một chàng trai khác
                                     <br>
-                                  Để xoa dịu trái tim đã gần tan nát
+                                    Nắm tay và bước đi bầu trời xanh ngát
                                     <br>
-                                  Rồi em sẽ gặp một chàng trai khác
+                                    Đón đưa dù bão giông lòng kề vai sát
                                     <br>
-                                  Biết cách yêu và chở che một cô gái có quá nhiều tổn thương "
+                                    Để xoa dịu trái tim đã gần tan nát
+                                    <br>
+                                    Rồi em sẽ gặp một chàng trai khác
+                                    <br>
+                                    Biết cách yêu và chở che một cô gái có quá nhiều tổn thương "
                                 </p>
                             </div>
                         </div>
@@ -164,12 +168,12 @@
                         <div class="pages-content">
                             <div class="content-inner">
                                 <p class="wish">
-                                  Cuối cùng, tớ tặng bông hoa cho người đẹp nè ^^
+                                    Cuối cùng, tớ tặng bông hoa cho người đẹp nè ^^
                                 </p>
                                 <div class="text">
                                     <img src="./img/anh-con-meo.png" alt="" style="width:200px;">
                                 </div>
-                             
+
                             </div>
                         </div>
                     </div>
@@ -177,6 +181,8 @@
                         <div class="pages-content">
                             <div class="content-inner">
                                 <h1>Hết rùi</h1>
+                                <button class="btn question button-55">
+                                    <span>Cậu bấm vào đây nha</span></button>
                             </div>
                         </div>
                     </div>
@@ -189,5 +195,101 @@
     <script src="./TweenMax.js"></script>
     <script src="./app.js"></script>
 </body>
+<script>
+    function playMusic() {
+        var audio = new Audio('./music.mp3');
+        audio.play();
+    }
+
+    function showConfirm() {
+        Swal.fire({
+            title: 'Cậu có muốn nghe chút nhạc không ?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Có',
+            cancelButtonText: 'Không'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                playMusic();
+                Swal.fire('Giờ thì hãy đọc những lời thầm thì mùa xuân của tớ nha !');
+            } else {
+                Swal.fire('OK ! Khum nghe thì thui ~~');
+            }
+        });
+    }
+    showConfirm();
+
+    // Tạo hàm hiển thị câu hỏi
+    function showQuestion() {
+        Swal.fire({
+            title: 'Tớ có thể mời cậu đi chơi không?',
+            icon: 'question',
+            input: 'radio',
+            inputOptions: {
+                'coa': 'Cóa chứ',
+                'ngai': 'Tớ ngại -.-',
+                'khong': 'Không !'
+            },
+            inputValidator: (value) => {
+                if (!value) {
+                    return 'Bạn cần chọn một lựa chọn';
+                }
+            }
+        }).then((result) => {
+            // Xử lý kết quả dựa trên lựa chọn của người dùng
+            if (result.isConfirmed) {
+                const choice = result.value;
+                if (choice === 'coa') {
+                    Swal.fire({
+                        title: 'Ui thiệt hả, quá trời hehehe',
+                        imageUrl: './img/she-say-yes.png',
+                        imageWidth: 400,
+                        imageHeight: 200,
+                        imageAlt: 'Custom image',
+                    })
+                       // hiện swal "Nhắn tin cho tớ nhá" nhấn ok thì mới chuỷen qua swal tiếp theo
+                        .then(() => {
+                            Swal.fire('Thật vui vì cậu đã đồng ý hí hí ^^')
+                                .then(() => {
+                                 Swal.fire('Nhắn tin cho tớ nhá')
+                                    .then(() => {
+                                        window.location.href = 'https://www.facebook.com/lecongtien.dev/';
+                                    });
+                                });
+                        });
+
+
+
+                } else if (choice === 'ngai') {
+                    Swal.fire({
+                        title: 'Ngại rì, trước cậu rủ tớ có ngại đâu =)))',
+                        imageUrl: './img/di-choi.png',
+                        imageWidth: 400,
+                        imageHeight: 170,
+                        imageAlt: 'Custom image',
+                    })
+                        .then(() => {
+                            Swal.fire('Cậu đồng ý nhá ~~')
+                                .then(() => {
+                                    showQuestion();
+                                });
+                        });
+
+                } else if (choice === 'khong') {
+                    Swal.fire('Tính năng này đang bảo trì, bạn hãy thử lại sau nhé!')
+                        .then(() => {
+                            // Gọi lại hàm hiển thị câu hỏi
+                            showQuestion();
+                        });
+                }
+            }
+        });
+    }
+
+    // Bắt sự kiện click vào nút có class .question
+    document.querySelector('.question').addEventListener('click', showQuestion);
+
+
+</script>
 
 </html>
