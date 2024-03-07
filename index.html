@@ -61,11 +61,37 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="page-num-4">
                         <div class="pages-content">
                             <div class="content-inner">
                                 <p class="wish">
-                                    Tớ vẫn theo dõi cậu đều đặn trên mạng xã hội, nhưng mà cũng ngại vì cậu có ny. Nên
+                                   Tớ vẫn nhớ những ngày đầu đặt chân lên Hà Nội, chỉ quanh quanh trong phòng trọ, không
+                                    biết đi đâu, không biết làm gì.
+                                </p>
+                                <p class="wish">
+                                   Và cậu là người đã giúp tớ giải phóng được cảm giác cô đơn đó ...
+                                 </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="page-num-5">
+                        <div class="pages-content">
+                            <div class="content-inner">
+                                <div class="text">
+                                    <img src="./img/anh-5.png" alt="" style="width:200px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="page-num-4">
+                        <div class="pages-content">
+                            <div class="content-inner">
+                                <p class="wish">
+                                    Tớ vẫn theo dõi cậu đều đặn trên mạng xã hội, năm nào tớ cũng ngoi lên từ Zalo chúc mừng sinh nhật cậu :v
+                                    nhưng mà cũng ngại vì cậu có ny. Vì thế mà
                                     tớ đã bỏ lỡ lời chúc 8-3 năm ngoái. Vậy nên...
                                 </p>
                             </div>
@@ -185,7 +211,7 @@
                             <div class="content-inner">
                                 <h1>Hết rùi</h1>
                                 <button class="btn question button-55">
-                                    <span>Cậu bấm vào đây nha</span></button>
+                                    <span>Nếu cậu không ngại tớ, thì hãy nhấn vào đây</span></button>
                             </div>
                         </div>
                     </div>
@@ -199,10 +225,10 @@
     <script src="./app.js"></script>
 </body>
 <script>
-    function playMusic() {
-        var audio = new Audio('./music.mp3');
-        audio.play();
+    function playMusic(audio) {
+      return  audio.play();
     }
+   
 
     function showConfirm() {
         Swal.fire({
@@ -213,8 +239,9 @@
             cancelButtonText: 'Không'
         }).then((result) => {
             if (result.isConfirmed) {
-                playMusic();
-                Swal.fire('Giờ thì hãy đọc những lời thầm thì mùa xuân của tớ nha !');
+                var audio = new Audio('./music.mp3');
+                audio.play();
+                Swal.fire('Giờ thì hãy đọc những lời thầm thì mùa xuân của tớ nha ! Cậu click vào góc hoặc kéo chuột ở góc sách để lật nha ^^')
             } else {
                 Swal.fire('OK ! Khum nghe thì thui ~~');
             }
@@ -222,8 +249,66 @@
     }
     showConfirm();
 
+    function showCofirmQuestion(){
+        Swal.fire({
+        title: 'Cậu có thấy phiền khi có 1 thằng ất ơ nào đó tự dưng ib cho cậu mỗi ngày không ?',
+        icon: 'question',
+        input: 'radio',
+        inputOptions: {
+            'hoi': 'Cũng hơi hơi',
+            'motchut': 'Thực ra cũng có chút',
+            'khong': 'Không hề nha !'
+        },
+        inputValidator: (value) => {
+            if (!value) {
+                return 'Bạn cần chọn một lựa chọn';
+            }
+        }
+    }).then((result) => {
+       // tắt nhạc đang phát
+         var audio = new Audio('./music.mp3');
+            audio.pause();
+        if (result.isConfirmed) {
+            const choice = result.value;
+            if (choice === 'hoi') {
+                    Swal.fire({
+                        title: 'Sorry ! Tớ sẽ bật lại trạng thái âm thầm như xưa :(',
+                        imageUrl: './img/khoc.jpg',
+                        imageWidth: 400,
+                        imageHeight: 400,
+                        imageAlt: 'Custom image',
+                    })
+                .then(() => {
+                    Swal.fire('Cảm ơn vì cậu đã dành thời gian đọc những lời thầm thì của tớ ^^')
+                })
+                .then(() => {
+                   window.location.href = 'https://www.youtube.com/watch?v=Qs-XcmaxaLw';
+                });
+               
+            } else if (choice === 'motchut') {
+                Swal.fire({
+                        title: 'Hic, tớ sẽ cố gắng không làm phiền cậu nhiều nữa !',
+                        imageUrl: './img/meobuon.png',
+                        imageWidth: 400,
+                        imageHeight: 400,
+                        imageAlt: 'Custom image',
+                    })
+                .then(() => {
+                    Swal.fire('Cảm ơn vì cậu đã dành thời gian đọc những lời thầm thì của tớ ^^')
+                })
+               
+            } else if (choice === 'khong') {
+                Swal.fire('Thật zay hả! Bảnh cũng không muốn ăn bơ nữa đâu :(')
+                .then(() => {
+                    showQuestion();
+                });
+            }
+        }
+    });
+    }
     // Tạo hàm hiển thị câu hỏi
     function showQuestion() {
+  
         Swal.fire({
             title: 'Tớ có thể mời cậu đi chơi không?',
             icon: 'question',
@@ -290,7 +375,7 @@
     }
 
     // Bắt sự kiện click vào nút có class .question
-    document.querySelector('.question').addEventListener('click', showQuestion);
+    document.querySelector('.question').addEventListener('click', showCofirmQuestion);
 
 
 </script>
