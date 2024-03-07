@@ -225,6 +225,8 @@
     <script src="./app.js"></script>
 </body>
 <script>
+    //tạo load bằng swal cho đến khi web load xong thì mới hiện swal
+    
     function playMusic(audio) {
       return  audio.play();
     }
@@ -281,9 +283,6 @@
                 .then(() => {
                     Swal.fire('Cảm ơn vì cậu đã dành thời gian đọc những lời thầm thì của tớ ^^')
                 })
-                .then(() => {
-                   window.location.href = 'https://www.youtube.com/watch?v=Qs-XcmaxaLw';
-                });
                
             } else if (choice === 'motchut') {
                 Swal.fire({
